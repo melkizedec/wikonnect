@@ -4,21 +4,25 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-
+    sourcemaps: {
+      enabled: EmberApp.env() !== 'production',
+      extensions: ['js']
+    },
+    babel: {
+      sourceMaps: 'both'
+    },
     'ember-bootstrap': {
       bootstrapVersion: 4,
       importBootstrapFont: false,
-    }
-
-    ,
+      'importBootstrapCSS': false
+    },
 
     svgJar: {
-      sourceDirs: ['public/images/icons'
+      sourceDirs: [
+        'public/images/icons'
       ]
     }
-  }
-
-  );
+  });
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
@@ -34,6 +38,4 @@ module.exports = function (defaults) {
   // along with the exports of each module as its value.
 
   return app.toTree();
-}
-
-;
+};
