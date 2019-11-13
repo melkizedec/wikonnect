@@ -14,29 +14,29 @@ Router.map(function () {
     path: '/course/:id'
   }
 
+  , function () {
+    this.route('modules', {
+      path: '/module/:id'
+    }
+
     , function () {
-      this.route('modules', {
-        path: '/module/:id'
+      this.route('lessons', {
+        path: '/lesson/:id'
       }
 
-        , function () {
-          this.route('lessons', {
-            path: '/lesson/:id'
-          }
-
-            , function () {
-              this.route('chapters', {
-                path: '/chapter/:id'
-              }
-
-              );
-            }
-
-          );
+      , function () {
+        this.route('chapters', {
+          path: '/chapter/:id'
         }
+
+        );
+      }
 
       );
     }
+
+    );
+  }
 
   );
 
@@ -44,9 +44,9 @@ Router.map(function () {
     path: '/profile/:id'
   }
 
-    , function () {
-      this.route('settings');
-    }
+  , function () {
+    this.route('settings');
+  }
 
   );
   this.route('search');
