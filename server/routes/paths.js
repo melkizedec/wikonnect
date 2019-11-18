@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const LearningPath = require('../models/learning_path');
 const validatePostData = require('../middleware/validation/validatePostData');
 const queryStringSearch = require('../middleware/queryStringSearch');
+const elasticIndex = require('../middleware/elasticSearchMiddleware');
 
 
 const router = new Router({
@@ -50,7 +51,7 @@ router.get('/:id', async ctx => {
 });
 
 
-router.post('/', validatePostData, async ctx => {
+router.post('/', validatePostData, elasticIndex, async ctx => {
   let newLearningPath = ctx.request.body;
 
   const learningpath = await LearningPath.query().insertAndFetch(newLearningPath);
@@ -58,7 +59,6 @@ router.post('/', validatePostData, async ctx => {
   ctx.assert(learningpath, 401, 'Something went wrong');
 
   ctx.status = 201;
-
   ctx.body = { learningpath };
 
 });
