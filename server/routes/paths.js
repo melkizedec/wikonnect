@@ -3,8 +3,6 @@ const LearningPath = require('../models/learning_path');
 const validatePostData = require('../middleware/validation/validatePostData');
 const queryStringSearch = require('../middleware/queryStringSearch');
 const { elasticIndex, elasticSearch } = require('../middleware/elasticSearchMiddleware');
-const { Client } = require('@elastic/elasticsearch');
-const client = new Client({ node: 'http://localhost:9200' });
 
 
 const router = new Router({
