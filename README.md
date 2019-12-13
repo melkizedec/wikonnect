@@ -71,7 +71,7 @@ Running `knex migrate:latest ` in the `server/` directory will use the migration
 
 To populate the database with dummy data (defined in `server/db/seeds`), run `knex seed:run`. 
 
-Now start your server! `yarn start`.
+Now start your server! `yarn start`. (You can ignore the Elasticsearch warning if you don't want to set up Elasticsearch immediately- it is not necessary for running Wikonnect)
 
 #### Get Ember up and running
 
